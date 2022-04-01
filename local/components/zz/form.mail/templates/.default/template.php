@@ -73,16 +73,16 @@
 	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="1">
 	    	</div>
 	    	<div class="col">
-	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="1">
+	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="2">
 	    	</div>
 	    	<div class="col">
-	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="1">
+	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="3">
 	    	</div>
 	    	<div class="col">
-	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="1">
+	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="4">
 	    	</div>
 	    	<div class="col">
-	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="1">
+	    		<input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1[0][]" value="5">
 	    	</div>
 	    	<div class="col">
 	    		<button class="btn btn-primary delMulti1" id="delMulti1">Удалить</button>
@@ -119,7 +119,7 @@
 	});
 
 	$(document).ready(function() {
-		let lineNo = 1;
+		let lineNo = 2;
 		let row = 1;
 		let i = 0;
 		let markup4 = '';
@@ -127,6 +127,7 @@
 		
 		$('#addMulti1').click(function() {
 
+			    /*markup = '<div class="col"><input type="text" class="form-control" id="multi1" placeholder="multi" name="multi'+ lineNo + '[]" value="1"></div>';*/
 			    markup = '<div class="col"><input type="text" class="form-control" id="multi1" placeholder="multi" name="multi1['+ lineNo + '][]" value="1"></div>';
 			    
 			    markup4 = '<div class="form-group" id="multi1Group"><div class="row inputRow">';

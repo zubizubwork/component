@@ -91,37 +91,62 @@ $this->setFrameMode(false);?>
 		$arrInfo .= sprintf("Склад: %s <br/>",$_POST['store']);
 		
 		$arrInfo .= sprintf("<br><h3>Состав заказа: %s </h3><br/>",$_POST['store']);
-		foreach($_POST['multi1'] as $row){
-			foreach($row as $key => $inputData){
-				
-				switch ($key) {
-					case '0':
+
+		$rowData=[];
+
+		foreach($_POST['multi1'] as $k => $row){
+
+			foreach($row as $value){
+			$rowData[$k]['VALUES'][] = $value;
+	}
+}
+/*print_r(' rowData ');
+						print_r($rowData);*/
+
+$inputDataKey = 0;
+		foreach($_POST['multi1'] as $k => $row){	
+			foreach($row as $k2 => $inputData){
+				#array_walk_recursive($inputData, function (&$value, $key) {});
+
+
+
+					if($inputDataKey == 0){
 						$arrInfo .= sprintf("Бренд: %s <br/>",$inputData[$key]);
-						break;
-					case '1':
-						$arrInfo .= sprintf("Наименование: %s <br/>",$inputData[$key]);
-						break;
-					case '2':
-						$arrInfo .= sprintf("Количество: %s <br/>",$inputData[$key]);
-						break;
-					case '3':
-						$arrInfo .= sprintf("Фасовка: %s <br/>",$inputData[$key]);
-						break;
-					case '4':
-						$arrInfo .= sprintf("Клиент: %s <br/>",$inputData[$key]);
-						break;
-					
-					default:
-						// code...
-						break;
 					}
+					elseif ($inputDataKey == 1){
+
+						$arrInfo .= sprintf("Наименование: %s <br/>",$inputData[$key]);
+
+					}
+					elseif ($inputDataKey == 2){
+						$arrInfo .= sprintf("Количество: %s <br/>",$inputData[$key]);
+						
+					}
+					
+					elseif ($inputDataKey == 3){
+						$arrInfo .= sprintf("Фасовка: %s <br/>",$inputData[$key]);
+						
+					}
+					
+					elseif ($inputDataKey == 4){
+						$arrInfo .= sprintf("Клиент: %s <br/>",$inputData[$key]);
+						
+					}
+							
+			
+					$inputDataKey++;
 				}
 				$arrInfo .= "<br>-------<br>"	;
+
+				$inputDataKey = 0;
 			}	
+
 				$arrInfo .= sprintf("Комментарий: %s <br/>", $_POST['comment']);
 
 			print_r($arrInfo);
 		}
+
+
 		
 
 			$fileSave = CFile::SaveFile(
@@ -148,7 +173,7 @@ $this->setFrameMode(false);?>
 
 <pre>
 <? #print_r($_POST);?>
-<? print_r($_FILES);?>
+<? #print_r($_FILES);?>
 </pre>
 
 
